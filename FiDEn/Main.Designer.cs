@@ -1,6 +1,6 @@
 ﻿namespace FiDEn
 {
-  partial class Form1
+  partial class Main
   {
     /// <summary>
     /// 設計工具所需的變數。
