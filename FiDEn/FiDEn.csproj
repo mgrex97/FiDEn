@@ -51,12 +51,6 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="About1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="About1.Designer.cs">
-      <DependentUpon>About1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Extention.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -80,9 +74,6 @@
     </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="About1.resx">
-      <DependentUpon>About1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -122,7 +113,7 @@
     <Content Include="Resources\inverted-old-visa1.png" />
     <Content Include="Resources\lock_128px_1204371_easyicon.net.ico" />
     <Content Include="Resources\lock_128px_1204371_easyicon.net.png" />
-    <Content Include="TwoStepsValidationReadMe.txt" />
+    <None Include="TwoStepsValidationReadMe.md" />
     <None Include="key" />
     <Content Include="MailInfo.user" />
   </ItemGroup>
