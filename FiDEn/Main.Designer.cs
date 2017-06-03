@@ -71,6 +71,7 @@
       this.label5 = new System.Windows.Forms.Label();
       this.lbAutoMonitoring = new System.Windows.Forms.ListBox();
       this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+      this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
       this.groupBox3.SuspendLayout();
       this.groupBox4.SuspendLayout();
       this.gbStatus.SuspendLayout();
@@ -92,6 +93,7 @@
       this.btnRegSystemService.TabIndex = 4;
       this.btnRegSystemService.Text = "註冊程式為系統服務";
       this.btnRegSystemService.UseVisualStyleBackColor = true;
+      this.btnRegSystemService.Click += new System.EventHandler(this.btnRegSystemService_Click);
       // 
       // btnRemoveMonitor
       // 
@@ -102,6 +104,7 @@
       this.btnRemoveMonitor.TabIndex = 3;
       this.btnRemoveMonitor.Text = "移除";
       this.btnRemoveMonitor.UseVisualStyleBackColor = true;
+      this.btnRemoveMonitor.Click += new System.EventHandler(this.btnRemoveMonitor_Click);
       // 
       // groupBox3
       // 
@@ -134,6 +137,7 @@
       this.btnDecrypt.TabIndex = 9;
       this.btnDecrypt.Text = "解密";
       this.btnDecrypt.UseVisualStyleBackColor = true;
+      this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
       // 
       // btnDecryptBrowse
       // 
@@ -143,6 +147,7 @@
       this.btnDecryptBrowse.TabIndex = 5;
       this.btnDecryptBrowse.Text = "瀏覽";
       this.btnDecryptBrowse.UseVisualStyleBackColor = true;
+      this.btnDecryptBrowse.Click += new System.EventHandler(this.btnDecryptBrowse_Click);
       // 
       // label3
       // 
@@ -194,6 +199,7 @@
       this.btnEncrypt.TabIndex = 3;
       this.btnEncrypt.Text = "加密";
       this.btnEncrypt.UseVisualStyleBackColor = true;
+      this.btnEncrypt.Click += new System.EventHandler(this.btnEncrypt_Click);
       // 
       // label4
       // 
@@ -212,6 +218,7 @@
       this.btnEncryptBrowse.TabIndex = 0;
       this.btnEncryptBrowse.Text = "瀏覽";
       this.btnEncryptBrowse.UseVisualStyleBackColor = true;
+      this.btnEncryptBrowse.Click += new System.EventHandler(this.btnEncryptBrowse_Click);
       // 
       // gbStatus
       // 
@@ -234,6 +241,7 @@
       this.btnClearValidate.TabIndex = 8;
       this.btnClearValidate.Text = "清除驗證";
       this.btnClearValidate.UseVisualStyleBackColor = true;
+      this.btnClearValidate.Click += new System.EventHandler(this.btnClearValidate_Click);
       // 
       // btnValidate
       // 
@@ -244,6 +252,7 @@
       this.btnValidate.TabIndex = 7;
       this.btnValidate.Text = "驗證";
       this.btnValidate.UseVisualStyleBackColor = true;
+      this.btnValidate.Click += new System.EventHandler(this.btnValidate_Click);
       // 
       // lbStatus
       // 
@@ -258,6 +267,7 @@
       // timer1
       // 
       this.timer1.Interval = 1000;
+      this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
       // 
       // label6
       // 
@@ -278,6 +288,7 @@
       this.btnAbout.TabIndex = 12;
       this.btnAbout.Text = "關於凡殿...";
       this.btnAbout.UseVisualStyleBackColor = true;
+      this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
       // 
       // btnAddMonitor
       // 
@@ -288,6 +299,7 @@
       this.btnAddMonitor.TabIndex = 2;
       this.btnAddMonitor.Text = "新增";
       this.btnAddMonitor.UseVisualStyleBackColor = true;
+      this.btnAddMonitor.Click += new System.EventHandler(this.btnAddMonitor_Click);
       // 
       // tbNmEncrypt
       // 
@@ -306,6 +318,7 @@
       this.btnNmEncrypt.TabIndex = 3;
       this.btnNmEncrypt.Text = "加密";
       this.btnNmEncrypt.UseVisualStyleBackColor = true;
+      this.btnNmEncrypt.Click += new System.EventHandler(this.btnNmEncrypt_Click);
       // 
       // label1
       // 
@@ -324,6 +337,7 @@
       this.bntNmEncryptBrowse.TabIndex = 0;
       this.bntNmEncryptBrowse.Text = "瀏覽";
       this.bntNmEncryptBrowse.UseVisualStyleBackColor = true;
+      this.bntNmEncryptBrowse.Click += new System.EventHandler(this.bntNmEncryptBrowse_Click);
       // 
       // tbMain
       // 
@@ -399,6 +413,7 @@
       this.btnNmDecrypt.TabIndex = 9;
       this.btnNmDecrypt.Text = "解密";
       this.btnNmDecrypt.UseVisualStyleBackColor = true;
+      this.btnNmDecrypt.Click += new System.EventHandler(this.btnNmDecrypt_Click);
       // 
       // bntNmDecryptBrowse
       // 
@@ -408,6 +423,7 @@
       this.bntNmDecryptBrowse.TabIndex = 5;
       this.bntNmDecryptBrowse.Text = "瀏覽";
       this.bntNmDecryptBrowse.UseVisualStyleBackColor = true;
+      this.bntNmDecryptBrowse.Click += new System.EventHandler(this.bntNmDecryptBrowse_Click);
       // 
       // label2
       // 
@@ -491,8 +507,12 @@
       // 
       // notifyIcon1
       // 
-      this.notifyIcon1.Text = "notifyIcon1";
-      this.notifyIcon1.Visible = true;
+      this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+      this.notifyIcon1.Text = "FiDEn系統常駐";
+      // 
+      // folderBrowserDialog1
+      // 
+      this.folderBrowserDialog1.ShowNewFolderButton = false;
       // 
       // Main
       // 
@@ -571,6 +591,7 @@
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.ListBox lbAutoMonitoring;
     private System.Windows.Forms.NotifyIcon notifyIcon1;
+    private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
   }
 }
 

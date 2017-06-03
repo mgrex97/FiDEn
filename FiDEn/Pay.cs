@@ -66,7 +66,7 @@ namespace FiDEn
     {
       //!請先加密
       StreamWriter writer = new StreamWriter(@".\key",false,Encoding.Unicode);
-      writer.WriteLine("Validate=true");
+      writer.WriteLine("IsPaid=true");
       writer.WriteLine($"ValidationDate={DateTime.Now:yyyy/MM/dd}");
       writer.WriteLine($"Email={tbMail.Text}");
 

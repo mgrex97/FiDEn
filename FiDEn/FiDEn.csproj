@@ -45,6 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="About1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About1.Designer.cs">
+      <DependentUpon>About1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extention.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -66,6 +78,12 @@
     <Compile Include="TwoStepsValidation.Designer.cs">
       <DependentUpon>TwoStepsValidation.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="About1.resx">
+      <DependentUpon>About1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>

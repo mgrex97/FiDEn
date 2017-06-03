@@ -35,8 +35,8 @@ namespace FiDEn
         pay.Initialize();
       }
 
-      Main main = new FiDEn.Main();
-      main.Initialize();
+      Application.Run(new Main());
+      
 
 
 
