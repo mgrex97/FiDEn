@@ -6,7 +6,8 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+TwoStepsValidation.*
+key
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
