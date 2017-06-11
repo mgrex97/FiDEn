@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -97,7 +98,11 @@ namespace FiDEn
 
     private void btnNmEncrypt_Click(object sender,EventArgs e)
     {
-
+      if(FileSizeCheck()==false)
+      {
+        MessageBox.Show("檔案不能超過25MB！！","錯誤",MessageBoxButtons.OK,MessageBoxIcon.Error);
+        return;
+      }
     }
 
     private void bntNmDecryptBrowse_Click(object sender,EventArgs e)
@@ -141,7 +146,7 @@ namespace FiDEn
     {
       if(folderBrowserDialog1.ShowDialog() != DialogResult.Cancel)
       {
-        if(lbAutoMonitoring.Items.Contains(folderBrowserDialog1.SelectedPath)==false)
+        if(lbAutoMonitoring.Items.Contains(folderBrowserDialog1.SelectedPath) == false)
         {
           lbAutoMonitoring.Items.Add(folderBrowserDialog1.SelectedPath);
         }
@@ -149,7 +154,7 @@ namespace FiDEn
         {
           MessageBox.Show("資料夾已存在，取消新增！","提示",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
         }
-        
+
       }
     }
 
@@ -168,5 +173,10 @@ namespace FiDEn
     #endregion
 
 
+    bool FileSizeCheck(string path)
+    {
+      if(File.Exists(path) == false) { return false; }
+      return new FileInfo(path).Length <= Program.MaximumFileSize;
+    }
   }
 }

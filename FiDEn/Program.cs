@@ -14,6 +14,7 @@ namespace FiDEn
     public static bool isPaid;
     public static DateTime validateDate;
     public static string Email;
+    public const int MaximumFileSize = 25 * 1024 * 1024;
     #endregion
     /// <summary>
     /// 應用程式的主要進入點。
@@ -36,7 +37,7 @@ namespace FiDEn
       }
 
       Application.Run(new Main());
-      
+
 
 
 
