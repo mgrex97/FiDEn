@@ -6,10 +6,9 @@ from Crypto.Cipher import AES, PKCS1_OAEP
 def decrypt_data(path,file_name,private_key):
     if(os.path.exists(path) == True and os.path.isfile(path+'/'+file_name) == True):
         # open the file that been dencrypt
-        rename_str = path+'/'+file_name+".temp"
-        os.rename(path+'/'+file_name,rename_str)
-        file_source = open(rename_str, "rb")
-        file_out = open(path+'/'+file_name, "wb")
+        rename_str = path+'/'+file_name[:-7]
+        file_source = open(path+'/'+file_name, "rb")
+        file_out = open(rename_str, "wb")
         
         enc_session_key, nonce, tag, ciphertext = \
             [ file_source.read(x) for x in (private_key.size_in_bytes(), 16, 16, -1) ]
@@ -23,7 +22,7 @@ def decrypt_data(path,file_name,private_key):
         file_out.write(data)
         file_out.close()
         file_source.close()
-        os.remove(rename_str)
+        os.remove(path+'/'+file_name)
         
 def get_session_key():
     private_key = RSA.import_key(open("object.dump").read())
