@@ -26,20 +26,30 @@ def decrypt_data(path,file_name,private_key):
         os.remove(rename_str)
         
 def get_session_key():
-    private_key = RSA.import_key(open("private.pem").read())
+    private_key = RSA.import_key(open("object.dump").read())
+    os.remove("object.dump")
     return private_key
 
-def start_decrypt(main_path):
+def start_decrypt_walk_file(main_path):
     private_key = get_session_key()
     if(os.path.exists(main_path) and os.path.isdir(main_path)):
         for dirPath, dirNames, fileNames in os.walk(main_path):
             for f in fileNames:
                 decrypt_data(dirPath,f,private_key)
 
+def start_decrypt_file(main_path,file_name):
+    private_key = get_session_key()
+    decrypt_data(main_path,file_name,private_key)
+    
 def main():
     if(len(sys.argv) == 2):
         main_path = sys.argv[1]
-        start_decrypt(main_path)
+        start_decrypt_walk_file(main_path)
+        return 0
+    else if(len(sys.argv) == 3):
+        main_path = sys.argv[1]
+        file_name = sys.argv[2]
+        start_decrypt_file(main_path,file_name)
         return 0
     else:
         print("傳入參數有誤")

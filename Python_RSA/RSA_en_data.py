@@ -26,20 +26,29 @@ def encrypt_data(path,file_name,session_key,recipient_key):
         
 def get_session_key():
     session_key = get_random_bytes(16)
-    recipient_key = RSA.import_key(open("receiver.pem").read())
+    recipient_key = RSA.import_key(open("object.dump").read())
+    os.remove("object.dump")
     return [session_key,recipient_key]
 
-def start_encrypt(main_path):
+def start_encrypt_walk_file(main_path):
     session_key,recipient_key = get_session_key()
     if(os.path.exists(main_path) and os.path.isdir(main_path)):
         for dirPath, dirNames, fileNames in os.walk(main_path):
             for f in fileNames:
                 encrypt_data(dirPath,f,session_key,recipient_key)
 
+def start_encrypt_file(main_path,file_name):
+    session_key,recipient_key = get_session_key()
+    encrypt_data(main_path,file_name,session_key,recipient_key)
+
 def main():
     if(len(sys.argv) == 2):
         main_path = sys.argv[1]
-        start_encrypt(main_path)
+        start_encrypt_walk_file(main_path)
+        return 0
+    else if(len(sys.argv) == 3):
+        main_path = sys.argv[1]
+        file_name = sys.argv[2]
         return 0
     else:
         print("傳入參數有誤")
