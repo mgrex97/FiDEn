@@ -35,7 +35,6 @@ def start_decrypt_walk_file(main_path):
         for dirPath, dirNames, fileNames in os.walk(main_path):
             for f in fileNames:
                 decrypt_data(dirPath,f,private_key)
-
 def start_decrypt_file(main_path,file_name):
     private_key = get_session_key()
     decrypt_data(main_path,file_name,private_key)
