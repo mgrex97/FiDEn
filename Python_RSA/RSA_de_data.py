@@ -49,7 +49,7 @@ def start_decrypt_walk_file(main_path):
                     
 def start_decrypt_file(main_path,file_name):
     private_key,status = get_session_key()
-    if(status == 0)
+    if(status == 0):
         decrypt_data(main_path,file_name,private_key)
     return status
     
