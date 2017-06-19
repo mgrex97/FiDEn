@@ -41,13 +41,14 @@ def start_decrypt_file(main_path,file_name):
     
 def main():
     if(len(sys.argv) == 2):
-        main_path = sys.argv[1]
-        start_decrypt_walk_file(main_path)
+        main_path = (sys.argv[1])
+        print(main_path)
+        #start_decrypt_walk_file(main_path)
         return 0
-    else if(len(sys.argv) == 3):
+    elif(len(sys.argv) == 3):
         main_path = sys.argv[1]
         file_name = sys.argv[2]
-        start_decrypt_file(main_path,file_name)
+        #start_decrypt_file(main_path,file_name)
         return 0
     else:
         print("傳入參數有誤")
