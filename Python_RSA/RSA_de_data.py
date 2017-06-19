@@ -6,7 +6,7 @@ from Crypto.Cipher import AES, PKCS1_OAEP
 def decrypt_data(path,file_name,private_key):
     if(os.path.exists(path) == True and os.path.isfile(path+'/'+file_name) == True):
         # open the file that been dencrypt
-        rename_str = path+'/'+file_name[:-7]
+        rename_str = path+'/'+file_name[:-6]
         file_source = open(path+'/'+file_name, "rb")
         file_out = open(rename_str, "wb")
         
@@ -42,13 +42,12 @@ def start_decrypt_file(main_path,file_name):
 def main():
     if(len(sys.argv) == 2):
         main_path = (sys.argv[1])
-        print(main_path)
-        #start_decrypt_walk_file(main_path)
+        start_decrypt_walk_file(main_path)
         return 0
     elif(len(sys.argv) == 3):
         main_path = sys.argv[1]
         file_name = sys.argv[2]
-        #start_decrypt_file(main_path,file_name)
+        start_decrypt_file(main_path,file_name)
         return 0
     else:
         print("傳入參數有誤")
