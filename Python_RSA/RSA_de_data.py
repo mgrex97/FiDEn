@@ -12,6 +12,7 @@ def decrypt_data(path,file_name,private_key):
         
         enc_session_key, nonce, tag, ciphertext = \
             [ file_source.read(x) for x in (private_key.size_in_bytes(), 16, 16, -1) ]
+
         # Decrypt the session key with the public RSA key
         cipher_rsa = PKCS1_OAEP.new(private_key)
         session_key = cipher_rsa.decrypt(enc_session_key)
@@ -25,33 +26,45 @@ def decrypt_data(path,file_name,private_key):
         os.remove(path+'/'+file_name)
         
 def get_session_key():
-    private_key = RSA.import_key(open("object.dump").read())
-    os.remove("object.dump")
-    return private_key
+    status = 0
+    try:
+        private_key = RSA.import_key(open("./en/object.dump").read())
+        os.remove("./en/object.dump")
+    except OSError as err:
+        status = 2
+    except FileNotFoundError:
+        status = 3
+    except:
+        status = 4
+    return [private_key,status]
 
 def start_decrypt_walk_file(main_path):
-    private_key = get_session_key()
-    if(os.path.exists(main_path) and os.path.isdir(main_path)):
+    private_key,status = get_session_key()
+    if(status == 0 and os.path.exists(main_path) and os.path.isdir(main_path)):
         for dirPath, dirNames, fileNames in os.walk(main_path):
             for f in fileNames:
-                decrypt_data(dirPath,f,private_key)
+                if(len( f ) >= 6 and f[:-6] == ".fiden"):
+                    decrypt_data(dirPath,f,private_key)
+    return status
+                    
 def start_decrypt_file(main_path,file_name):
-    private_key = get_session_key()
-    decrypt_data(main_path,file_name,private_key)
+    private_key,status = get_session_key()
+    if(status == 0)
+        decrypt_data(main_path,file_name,private_key)
+    return status
     
 def main():
+    status = 0
     if(len(sys.argv) == 2):
         main_path = (sys.argv[1])
-        start_decrypt_walk_file(main_path)
-        return 0
+        status = start_decrypt_walk_file(main_path)
     elif(len(sys.argv) == 3):
         main_path = sys.argv[1]
         file_name = sys.argv[2]
-        start_decrypt_file(main_path,file_name)
-        return 0
+        status = start_decrypt_file(main_path,file_name)
     else:
-        print("傳入參數有誤")
-        return 1
+        status = 1
+    return status
 
 if __name__ == "__main__":
     # execute only if run as a script
